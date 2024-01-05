@@ -1,0 +1,23 @@
+﻿@using WebApp.Strategy.Models.Enum;
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model Settings
+@* 
+    -- Tag Helpers
+    -- Form içi, 
+     asp-controller : Settings Controller'ına gider
+     asp-action :  Bu controller içinden ChangeDatabase Action methoduna gitmesi için kullanılan bir tag helperdır
+     -- Select içi,  
+     asp-for : Verdiğim classın içine git 
+     asp-items :Bu classın içindeki DatabaseType enum içeren bir select list oluştur.Bu , kullanıcının belirli bir vt türü seçmesine izin verir. (sql ya da mongo db )
+*@
+
+<form asp-controller="Settings" asp-action="ChangeDatabase" method="post">
+   <select name="databaseType" asp-for="DatabaseType" asp-items="Html.GetEnumSelectList<DatabaseType>()"></select>
+
+   <button type="submit"> Güncelle </button>
+
+</form>
+
